@@ -12,7 +12,7 @@ Features:
 Table of Contents:
 | Data Structures     | Description                                      | Branch |
 |---------------------|--------------------------------------------------|------|
-| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](src/data_structures/linked_list.c) |
+| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/tree/LinkedList) |
 | Stack               | A data structure that follows the Last-In-First-Out (LIFO) principle. | [Stack](src/data_structures/stack.c) |
 | Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](src/data_structures/queue.c) |
 | Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](src/data_structures/binary_search_tree.c) |
