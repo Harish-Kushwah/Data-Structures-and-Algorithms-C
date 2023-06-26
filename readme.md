@@ -1,34 +1,95 @@
-Data Structures and Algorithms in C
+# Linked List
+This branch contains the implementation of a singly linked list in C. A linked list is a linear data structure where elements are stored as nodes, each containing a value and a pointer to the next node. It allows for efficient insertion and deletion at any position.
 
-This repository contains a collection of commonly used data structures and algorithms implemented in C. It serves as a comprehensive resource for learning and understanding fundamental concepts in data structures and algorithms.
 
-Features:
-- Well-documented implementations of various data structures and algorithms in C.
-- Each component is organized in a separate branch, allowing for easy navigation and focused exploration.
-- Includes detailed README files for each data structure and algorithm, providing explanations, usage examples, and time complexities.
-- Animations and visualizations to help understand the behavior and functionality of data structures and algorithms.
-- Beginner-friendly code with clear explanations and step-by-step walkthroughs.
+##Singly Linked List
+A singly linked list is a data structure consisting of a collection of nodes, where each node contains a value and a pointer to the next node
+```c
+//Node structure of Singly Linked List 
+typedef struct Node
+{
+    int val;
+    struct Node *next;
+}Node;
+```
 
-Table of Contents:
-| Data Structures     | Description                                      | Branch |
-|---------------------|--------------------------------------------------|------|
-| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](src/data_structures/linked_list.c) |
-| Stack               | A data structure that follows the Last-In-First-Out (LIFO) principle. | [Stack](src/data_structures/stack.c) |
-| Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](src/data_structures/queue.c) |
-| Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](src/data_structures/binary_search_tree.c) |
-|Graph|Graphs are a fundamental data structure used to represent relationships between objects. They consist of vertices (nodes) connected by edges.|[Graph](src/)|
+### Functionality
 
-| Algorithms          | Description                                      | Code |
-|---------------------|--------------------------------------------------|------|
-| Binary Search       | A search algorithm that finds the position of a target value within a sorted array. | [binary_search.c](src/algorithms/binary_search.c) |
-| Bubble Sort         | A simple sorting algorithm that repeatedly swaps adjacent elements if they are in the wrong order. | [bubble_sort.c](src/algorithms/bubble_sort.c) |
-| Merge Sort          | A divide-and-conquer sorting algorithm that recursively divides the array and merges the sorted subarrays. | [merge_sort.c](src/algorithms/merge_sort.c) |
-| Depth-First Search  | A graph traversal algorithm that explores as far as possible before backtracking. | [dfs.c](src/algorithms/dfs.c) |
+The following table provides an overview of the functions available in the linked list implementation:
 
-Whether you're a student learning data structures and algorithms or an experienced developer looking for reference implementations, this repository is designed to help you enhance your understanding and proficiency in C programming and algorithmic problem-solving.
+| Function          | Description                                       |Link|
+|-------------------|---------------------------------------------------|-----|
+| `createNode`      | Creates a new node with the given value.           |[click here](#createnode)|
+|`createLinkedList`|Creates a linked list consist of N nodes.|[click here](#createlinkedlist)|
+| `insertAtBeginning` | Inserts a new node at the beginning of the linked list. |[click here](src/linkedlist.h)|
+| `insertAtEnd`     | Inserts a new node at the end of the linked list.  |[click here](src/linkedlist.h)|
+| `insertAtPosition` | Inserts a new node at a specific position in the linked list. |[click here](src/linkedlist.h)|
+| `deleteFromBeginning` | Deletes the first node from the linked list.     |[click here](src/linkedlist.h)|
+| `deleteFromEnd`   | Deletes the last node from the linked list.       |[click here](src/linkedlist.h)|
+| `deleteAtPosition` | Deletes a node from a specific position in the linked list. |[click here](src/linkedlist.h)|
+| `search`          | Searches for a given value in the linked list.     |[click here](src/linkedlist.h)|
+| `printLinkedList`         | Displays the elements of the linked list.          |[click here](#printlinkedlist)|
+| `length`          | Calculates and returns the length of the linked list. |[click here](src/linkedlist.h) |
 
-Feel free to explore the different branches and delve into the individual implementations. Contributions, suggestions, and bug reports are welcome!
+| File         | Description                                       |Link|
+|-------------------|---------------------------------------------------|-----|
+| `linkedlist.h`          | Contain all the functions  |[click here](src/linkedlist.h) |
+| `main.c`          | Usage of all function  |[click here](src/main.c) |
 
-Start your journey into the world of data structures and algorithms with this repository and take your programming skills to the next level.
+---
+<a name="createnode"></a>
+#### createNode()
 
+```c
+Node *createNode(int val)
+{
+    Node *new_node = (Node*)malloc(sizeof(Node));
+    new_node->next = NULL;
+    new_node->val = val;
+    return new_node;
+
+}
+```
+<a name="createlinkedlist"></a>
+#### createLinkedList()
+```c
+Node *createLinkedList()
+{
+    int n;
+    Node *temp = NULL,*new_node = NULL ,*head=NULL;
+    printf("Enter how many node wants to create :");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+       int val;
+       printf("Enter data into node :");
+       scanf("%d",&val);
+
+       new_node = createNode(val);
+
+       if(head==NULL)
+       {
+        head = temp=new_node;
+       }
+       else{
+        temp->next = new_node;
+        temp = new_node; 
+       }
+    }
+    return head;
+}
+
+```
+<a name ="printlinkedlist"></a>
+### printLinkedList()
+```c
+void printLinkedList(Node *head)
+{
+    printf("Linked list data :");
+    for(Node *temp = head; temp!=NULL; temp =temp->next)
+    {
+        printf("%d " , temp->val);
+    }
+}
+```
 
