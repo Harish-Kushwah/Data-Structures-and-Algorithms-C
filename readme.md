@@ -1,19 +1,19 @@
-##Data Structures and Algorithms in C
+## Data Structures and Algorithms in C
 [![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))  [![License: MIT](https://img.shields.io/badge/License-MIT-gre.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains a collection of commonly used data structures and algorithms implemented in C. It serves as a comprehensive resource for learning and understanding fundamental concepts in data structures and algorithms.
 
-##Features:
+## Features:
 - Well-documented implementations of various data structures and algorithms in C.
 - Each component is organized in a separate branch, allowing for easy navigation and focused exploration.
 - Includes detailed README files for each data structure and algorithm, providing explanations, usage examples, and time complexities.
 - Animations and visualizations to help understand the behavior and functionality of data structures and algorithms.
 - Beginner-friendly code with clear explanations and step-by-step walkthroughs.
 
-##Table of Contents:
+## Table of Contents:
 | Data Structures     | Description                                      | Branch |
 |---------------------|--------------------------------------------------|------|
-| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](src/data_structures/linked_list.c) |
+| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/LinkedList/readme.md) |
 | Stack               | A data structure that follows the Last-In-First-Out (LIFO) principle. | [Stack](src/data_structures/stack.c) |
 | Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](src/data_structures/queue.c) |
 | Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](src/data_structures/binary_search_tree.c) |
