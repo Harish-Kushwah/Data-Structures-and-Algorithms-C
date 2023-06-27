@@ -31,7 +31,7 @@ The following table provides an overview of the functions available in the linke
 
 | File         | Description                                       |Link|
 |-------------------|---------------------------------------------------|-----|
-| `stack.h`          | Contain all the functions  |[click here](src/linkedlist.h) |
+| `stack.h`          | Contain all the functions  |[click here](src/stack.h) |
 | `main.c`          | Usage of all function  |[click here](src/main.c) |
 
 ---
