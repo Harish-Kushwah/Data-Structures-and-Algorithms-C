@@ -1,15 +1,16 @@
-Data Structures and Algorithms in C
+##Data Structures and Algorithms in C
+[![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))  [![License: MIT](https://img.shields.io/badge/License-MIT-gre.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains a collection of commonly used data structures and algorithms implemented in C. It serves as a comprehensive resource for learning and understanding fundamental concepts in data structures and algorithms.
 
-Features:
+##Features:
 - Well-documented implementations of various data structures and algorithms in C.
 - Each component is organized in a separate branch, allowing for easy navigation and focused exploration.
 - Includes detailed README files for each data structure and algorithm, providing explanations, usage examples, and time complexities.
 - Animations and visualizations to help understand the behavior and functionality of data structures and algorithms.
 - Beginner-friendly code with clear explanations and step-by-step walkthroughs.
 
-Table of Contents:
+##Table of Contents:
 | Data Structures     | Description                                      | Branch |
 |---------------------|--------------------------------------------------|------|
 | Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](src/data_structures/linked_list.c) |
@@ -30,5 +31,10 @@ Whether you're a student learning data structures and algorithms or an experienc
 Feel free to explore the different branches and delve into the individual implementations. Contributions, suggestions, and bug reports are welcome!
 
 Start your journey into the world of data structures and algorithms with this repository and take your programming skills to the next level.
+
+## Contact
+
+If you have any questions, suggestions, or need further assistance, please feel free to reach out to us at harishkuswah54321@gmail.com. 
+We appreciate your feedback and involvement in improving this repository.
 
 
