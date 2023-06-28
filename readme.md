@@ -6,9 +6,9 @@ A queue is a First-In-First-Out (FIFO) data structure, where elements are added 
 
 
 ## Static Implementation of Queue
-"static stack using an array" refers to a stack data structure where the size of the stack is fixed and determined at compile-time. It utilizes an array to store the stack elements.
+"static queue using an array" refers to a queue data structure where the size of the queue is fixed and determined at compile-time. It utilizes an array to store the queue elements.
 ```c
-//Stack structure of Static 
+//Queue structure of Static 
 typedef struct Queue
 {
     int item[CAPACITY];
@@ -19,7 +19,7 @@ typedef struct Queue
 
 ### Functionality
 
-The following table provides an overview of the functions available in the linked list implementation:
+The following table provides an overview of the functions available in the Queue implementation:
 
 | Function          | Description                                       |Link|
 |-------------------|---------------------------------------------------|-----|
