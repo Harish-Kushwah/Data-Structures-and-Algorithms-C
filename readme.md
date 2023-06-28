@@ -15,7 +15,7 @@ This repository contains a collection of commonly used data structures and algor
 |---------------------|--------------------------------------------------|------|
 | Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/LinkedList/readme.md) |
 | Stack               | A data structure that follows the Last-In-First-Out (LIFO) principle. | [Stack](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Stack/readme.md) |
-| Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](src/data_structures/queue.c) |
+| Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Queue/readme.md) |
 | Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](src/data_structures/binary_search_tree.c) |
 |Graph|Graphs are a fundamental data structure used to represent relationships between objects. They consist of vertices (nodes) connected by edges.|[Graph](src/)|
 
