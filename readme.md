@@ -1,40 +1,126 @@
-## Data Structures and Algorithms in C
-[![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))  [![License: MIT](https://img.shields.io/badge/License-MIT-gre.svg)](https://opensource.org/licenses/MIT)
+# Queue
+[![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 
-This repository contains a collection of commonly used data structures and algorithms implemented in C. It serves as a comprehensive resource for learning and understanding fundamental concepts in data structures and algorithms.
+This branch contains the implementation of a Queue data structure in C.
+A queue is a First-In-First-Out (FIFO) data structure, where elements are added at one end called the "rear" and removed from the other end called the "front." It follows the principle of "first item in, first item out."
 
-## Features:
-- Well-documented implementations of various data structures and algorithms in C.
-- Each component is organized in a separate branch, allowing for easy navigation and focused exploration.
-- Includes detailed README files for each data structure and algorithm, providing explanations, usage examples, and time complexities.
-- Animations and visualizations to help understand the behavior and functionality of data structures and algorithms.
-- Beginner-friendly code with clear explanations and step-by-step walkthroughs.
 
-## Table of Contents:
-| Data Structures     | Description                                      | Branch |
-|---------------------|--------------------------------------------------|------|
-| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/LinkedList/readme.md) |
-| Stack               | A data structure that follows the Last-In-First-Out (LIFO) principle. | [Stack](src/data_structures/stack.c) |
-| Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](src/data_structures/queue.c) |
-| Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](src/data_structures/binary_search_tree.c) |
-|Graph|Graphs are a fundamental data structure used to represent relationships between objects. They consist of vertices (nodes) connected by edges.|[Graph](src/)|
+## Static Implementation of Queue
+"static stack using an array" refers to a stack data structure where the size of the stack is fixed and determined at compile-time. It utilizes an array to store the stack elements.
+```c
+//Stack structure of Static 
+typedef struct Queue
+{
+    int item[CAPACITY];
+    int front;
+    int rare;
+}Queue;
+```
 
-| Algorithms          | Description                                      | Code |
-|---------------------|--------------------------------------------------|------|
-| Binary Search       | A search algorithm that finds the position of a target value within a sorted array. | [binary_search.c](src/algorithms/binary_search.c) |
-| Bubble Sort         | A simple sorting algorithm that repeatedly swaps adjacent elements if they are in the wrong order. | [bubble_sort.c](src/algorithms/bubble_sort.c) |
-| Merge Sort          | A divide-and-conquer sorting algorithm that recursively divides the array and merges the sorted subarrays. | [merge_sort.c](src/algorithms/merge_sort.c) |
-| Depth-First Search  | A graph traversal algorithm that explores as far as possible before backtracking. | [dfs.c](src/algorithms/dfs.c) |
+### Functionality
 
-Whether you're a student learning data structures and algorithms or an experienced developer looking for reference implementations, this repository is designed to help you enhance your understanding and proficiency in C programming and algorithmic problem-solving.
+The following table provides an overview of the functions available in the linked list implementation:
 
-Feel free to explore the different branches and delve into the individual implementations. Contributions, suggestions, and bug reports are welcome!
+| Function          | Description                                       |Link|
+|-------------------|---------------------------------------------------|-----|
+|`int()`| Initialize the Queue pointer       |[click here](#init)|
+|`enqueue()`| Adds an item to the rear of the queue.       |[click here](#enqueue)|
+|`dequeue()`|Removes and returns the item from the front of the queue. |[click here](#dequeue)|
+|`peek()`| Returns the item at the front of the queue without removing it.|[click here](#peek)|
+|`isEmpty()`| Checks if the queue is empty|[click here](#isempty)|
+|`size()`| Returns the number of elements in the queue.|[click here](#size)|
 
-Start your journey into the world of data structures and algorithms with this repository and take your programming skills to the next level.
+| File         | Description                                       |Link|
+|-------------------|---------------------------------------------------|-----|
+| `queue.h`          | Contain all the functions  |[click here](src/queue.h) |
+| `main.c`          | Usage of all function  |[click here](src/main.c) |
+
+---
+
+<a name="init"></a>
+#### init()
+
+```c
+//This function initialize the Queue
+Queue *init()
+{
+   Queue *qu = (Queue *)malloc(sizeof(Queue));
+   qu->front = -1;
+   qu->rare = -1;
+   return qu;
+}
+
+```
+<a name="enqueue"></a>
+#### enqueue()
+
+```c
+//add element into queue
+void enqueue(Queue *qu , int val)
+{
+    qu->item[++qu->rare]=val;
+}
+
+```
+---
+<a name="dequeue"></a>
+#### dequeue()
+
+```c
+//remove element from the queue
+int dequeue(Queue *qu)
+{
+    return qu->item[++qu->front];
+}
+```
+---
+
+<a name="peek"></a>
+#### peek()
+
+```c
+//return the first element from the queue
+int peek(Queue *qu)
+{
+    if(!isEmpty(qu))
+    return qu->item[qu->front];
+}
+```
+---
+<a name="isempty"></a>
+#### isEmpty()
+
+```c
+//check whether queue is empty or not
+int isEmpty(Queue *qu)
+{
+    return qu->front == qu->rare;
+}
+```
+<a name ="size"></a>
+#### size()
+
+```c
+//return the size of queue
+int size(Queue *qu)
+{
+    if(qu->rare==-1)
+    return 0;
+    return qu->rare + 1; 
+}
+```
+---
+
+## Contributing
+
+Contributions, bug reports, and suggestions are welcome! If you encounter any issues, have ideas for improvement, or would like to contribute to this project, please follow the guidelines in [CONTRIBUTE.md](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Stack/contribute.md).
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
-
-If you have any questions, suggestions, or need further assistance, please feel free to reach out to us at harishkuswah54321@gmail.com. 
-We appreciate your feedback and involvement in improving this repository.
-
+For any questions or feedback, feel free to reach out to us at harishkushwah54321@gmail.com
 
