@@ -18,7 +18,7 @@ typedef struct Stack
 
 ### Functionality
 
-The following table provides an overview of the functions available in the linked list implementation:
+The following table provides an overview of the functions available in the stack implementation:
 
 | Function          | Description                                       |Link|
 |-------------------|---------------------------------------------------|-----|
