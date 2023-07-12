@@ -1,40 +1,241 @@
-## Data Structures and Algorithms in C
-[![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))  [![License: MIT](https://img.shields.io/badge/License-MIT-gre.svg)](https://opensource.org/licenses/MIT)
+# Tree
+[![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 
-This repository contains a collection of commonly used data structures and algorithms implemented in C. It serves as a comprehensive resource for learning and understanding fundamental concepts in data structures and algorithms.
+This branch contains the implementation of a Binary Search Tree in C. A Binary Search Tree is a Non linear data structure where elements are stored as nodes, each containing a value and a pointer to the left node and right node. It allows for efficient searching value.
 
-## Features:
-- Well-documented implementations of various data structures and algorithms in C.
-- Each component is organized in a separate branch, allowing for easy navigation and focused exploration.
-- Includes detailed README files for each data structure and algorithm, providing explanations, usage examples, and time complexities.
-- Animations and visualizations to help understand the behavior and functionality of data structures and algorithms.
-- Beginner-friendly code with clear explanations and step-by-step walkthroughs.
 
-## Table of Contents:
-| Data Structures     | Description                                      | Branch |
-|---------------------|--------------------------------------------------|------|
-| Linked List         | A linear data structure where elements are stored as nodes with pointers to the next element. | [LinkedList](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/LinkedList/readme.md) |
-| Stack               | A data structure that follows the Last-In-First-Out (LIFO) principle. | [Stack](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Stack/readme.md) |
-| Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Queue/readme.md) |
-| Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](src/data_structures/binary_search_tree.c) |
-|Graph|Graphs are a fundamental data structure used to represent relationships between objects. They consist of vertices (nodes) connected by edges.|[Graph](src/)|
+## Binary Search Tree
+A Binary Search Tree is a Non linear data structure consisting of a collection of nodes, where each node contains a value and a pointer to the left node and right node
+```c
+//Node structure of Binary Search Tree 
+typedef struct Node
+{
+    int val;
+    struct Node *left ,*right;
+}Node;
+```
 
-| Algorithms          | Description                                      | Code |
-|---------------------|--------------------------------------------------|------|
-| Binary Search       | A search algorithm that finds the position of a target value within a sorted array. | [binary_search.c](src/algorithms/binary_search.c) |
-| Bubble Sort         | A simple sorting algorithm that repeatedly swaps adjacent elements if they are in the wrong order. | [bubble_sort.c](src/algorithms/bubble_sort.c) |
-| Merge Sort          | A divide-and-conquer sorting algorithm that recursively divides the array and merges the sorted subarrays. | [merge_sort.c](src/algorithms/merge_sort.c) |
-| Depth-First Search  | A graph traversal algorithm that explores as far as possible before backtracking. | [dfs.c](src/algorithms/dfs.c) |
+### Functionality
 
-Whether you're a student learning data structures and algorithms or an experienced developer looking for reference implementations, this repository is designed to help you enhance your understanding and proficiency in C programming and algorithmic problem-solving.
+The following table provides an overview of the functions available in the Binary Search Tree implementation:
 
-Feel free to explore the different branches and delve into the individual implementations. Contributions, suggestions, and bug reports are welcome!
+| Function          | Description                                       |Link|
+|-------------------|---------------------------------------------------|-----|
+| `createNode`          | Create the node with given value Tree. |[click here](#createnode) |
+| `createBST`     | Create the Binary Search Tree           |[click here](#createbst)|
+|`inorder`|Inorder Traversal of Binary Search Tree.|[click here](#inorder)|
+|`preorder`|Preorder Traversal of Binary Search Tree.|[click here](#preorder)|
+|`postorder`|Postorder Traversal of Binary Search Tree.|[click here](#postorder)|
+| `insertNode` | Inserts a new node  in to the Binary Search Tree. |[click here](#insertnode)|
+| `CountTotalLeafNodes` | Count the total number of leaf nodes from Binary Search Tree.     |[click here](#counttotalleafnode)|
+| `CountTotalNonLeafNodes` | Count the total number of Non leaf nodes from Binary Search Tree.     |[click here](#counttotalnonleafnode)
+| `search`          | Searches for a given value in the Binary Search Tree.     |[click here](#search)|
 
-Start your journey into the world of data structures and algorithms with this repository and take your programming skills to the next level.
+
+| File         | Description                                       |Link|
+|-------------------|---------------------------------------------------|-----|
+| `tree.h`          | Contain all the functions  |[click here](src/tree.h) |
+| `main.c`          | Usage of all function  |[click here](src/main.c) |
+
+---
+<a name="createnode"></a>
+#### createNode()
+
+```c
+Node *createNode(int val)
+{
+    Node *newnode = (Node *)malloc(sizeof(Node));
+    newnode->val = val;
+    newnode->left = newnode->right = NULL;
+    return newnode;
+}
+```
+---
+<a name="createbst"></a>
+#### createBST()
+
+```c
+
+Node *createBST()
+{
+    int n;
+    printf("Enter how many nodes wants to create :");
+    scanf("%d", &n);
+    Node *root = NULL;
+    Node *newnode = NULL;
+    Node *temp = NULL;
+    for (int i = 0; i < n; i++)
+    {
+        newnode = (Node *)malloc(sizeof(Node));
+        printf("Enter value in node :");
+        scanf("%d", &newnode->val);
+        newnode->left = newnode->right = NULL;
+
+        if (root == NULL)
+        {
+            root = temp = newnode;
+        }
+        else
+        {
+            temp = root;
+            while (1)
+            {
+                if (newnode->val < temp->val)
+                {
+                    if (temp->left == NULL)
+                    {
+                        temp->left = newnode;
+                        break;
+                    }
+                    else
+                    {
+                        temp = temp->left;
+                    }
+                }
+                if (newnode->val > temp->val)
+                {
+                    if (temp->right == NULL)
+                    {
+                        temp->right = newnode;
+                        break;
+                    }
+                    else
+                    {
+                        temp = temp->right;
+                    }
+                }
+            }
+        }
+    }
+    return root;
+}
+```
+---
+
+<a name="inorder"></a>
+#### inorder()
+
+```c
+void inorder(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    inorder(root->left);
+    printf("%d ", root->val);
+    inorder(root->right);
+}
+```
+---
+<a name="preorder"></a>
+#### preorder()
+
+```c
+void preorder(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    printf("%d ", root->val);
+    preorder(root->left);
+    preorder(root->right);
+}
+```
+---
+<a name="postorder"></a>
+#### postorder()
+
+```c
+void postorder(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d ", root->val);
+}
+```
+---
+<a name ="insertnode"></a>
+### insertNode()
+
+```c
+Node *insertNode(Node *root, int val)
+{
+    if (root == NULL)
+    {
+        return createNode(val);
+    }
+    else
+    {
+        if (val < root->val)
+            root->left = insertNode(root->left, val);
+        else
+            root->right = insertNode(root->right, val);
+    }
+    return root;
+}
+```
+---
+<a name ="counttotalleafnode"></a>
+#### countTotalLeafNode()
+
+```c
+int countTotalLeafNode(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    if (root->left == NULL && root->right == NULL)
+        return 1;
+    return countTotalLeafNode(root->left) + countTotalLeafNode(root->right);
+}
+```
+---
+<a name="counttotalnonleafnode"></a>
+#### countTotalNonLeafNode()
+
+```c
+int countTotalNonLeafNode(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    if (root->left == NULL && root->right == NULL)
+        return 0;
+    return 1 + countTotalNonLeafNode(root->left) + countTotalNonLeafNode(root->right);
+}
+```
+
+---
+<a name = "search"></a>
+### search()
+
+```c
+int search(Node *root, int val)
+{
+    if (root == NULL)
+        return 0;
+        
+    if (root->val == val)
+        return 1;
+    else if (val < root->val)
+        search(root->left, val);
+    else
+        search(root->right, val);
+}
+```
+
+---
+
+## Contributing
+
+Contributions, bug reports, and suggestions are welcome! If you encounter any issues, have ideas for improvement, or would like to contribute to this project, please follow the guidelines in [CONTRIBUTE.md](CONTRIBUTE.md).
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
-
-If you have any questions, suggestions, or need further assistance, please feel free to reach out to us at harishkuswah54321@gmail.com. 
-We appreciate your feedback and involvement in improving this repository.
-
+For any questions or feedback, feel free to reach out to us at harishkushwah54321@gmail.com
 
