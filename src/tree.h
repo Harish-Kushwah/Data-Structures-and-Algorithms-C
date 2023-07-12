@@ -60,7 +60,28 @@ Node *createBST()
     }
     return root;
 }
-
+Node *createNode(int val)
+{
+    Node *newnode = (Node *)malloc(sizeof(Node));
+    newnode->val = val;
+    newnode->left = newnode->right = NULL;
+    return newnode;
+}
+Node *insertNode(Node *root, int val)
+{
+    if (root == NULL)
+    {
+        return createNode(val);
+    }
+    else
+    {
+        if (val < root->val)
+            root->left = insertNode(root->left, val);
+        else
+            root->right = insertNode(root->right, val);
+    }
+    return root;
+}
 void inorder(Node *root)
 {
     if (root == NULL)
@@ -91,13 +112,30 @@ void postorder(Node *root)
 
 int countTotalLeafNode(Node *root)
 {
-    if(root==NULL) return 0;
-    if(root->left == NULL && root->right == NULL) return 1;
-    return  countTotalLeafNode(root->left) + countTotalLeafNode(root->right);
+    if (root == NULL)
+        return 0;
+    if (root->left == NULL && root->right == NULL)
+        return 1;
+    return countTotalLeafNode(root->left) + countTotalLeafNode(root->right);
 }
 int countTotalNonLeafNode(Node *root)
 {
-    if(root==NULL) return 0;
-    if(root->left == NULL && root->right == NULL) return 0;
-    return 1 +countTotalNonLeafNode(root->left) + countTotalNonLeafNode(root->right);
+    if (root == NULL)
+        return 0;
+    if (root->left == NULL && root->right == NULL)
+        return 0;
+    return 1 + countTotalNonLeafNode(root->left) + countTotalNonLeafNode(root->right);
+}
+
+int search(Node *root, int val)
+{
+    if (root == NULL)
+        return 0;
+        
+    if (root->val == val)
+        return 1;
+    else if (val < root->val)
+        search(root->left, val);
+    else
+        search(root->right, val);
 }
