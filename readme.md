@@ -1,13 +1,13 @@
-# Tree
+# Graph
 [![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 
-This branch contains the implementation of a Binary Search Tree in C. A Binary Search Tree is a Non linear data structure where elements are stored as nodes, each containing a value and a pointer to the left node and right node. It allows for efficient searching value.
+This branch contains the implementation of a Graph in C. A Graph is a Non linear data structure where elements are stored as nodes, each containing a value and a pointer to the left node and right node. It allows for efficient searching value.
 
 
-## Binary Search Tree
-A Binary Search Tree is a Non linear data structure consisting of a collection of nodes, where each node contains a value and a pointer to the left node and right node
+## Graph
+A Graph is a Non linear data structure consisting of a collection of nodes, where each node contains a value and a pointer to the left node and right node
 ```c
-//Node structure of Binary Search Tree 
+//Node structure of Graph 
 typedef struct Node
 {
     int val;
@@ -17,19 +17,19 @@ typedef struct Node
 
 ### Functionality
 
-The following table provides an overview of the functions available in the Binary Search Tree implementation:
+The following table provides an overview of the functions available in the Graph implementation:
 
 | Function          | Description                                       |Link|
 |-------------------|---------------------------------------------------|-----|
 | `createNode`          | Create the node with given value Tree. |[click here](#createnode) |
-| `createBST`     | Create the Binary Search Tree           |[click here](#createbst)|
-|`inorder`|Inorder Traversal of Binary Search Tree.|[click here](#inorder)|
-|`preorder`|Preorder Traversal of Binary Search Tree.|[click here](#preorder)|
-|`postorder`|Postorder Traversal of Binary Search Tree.|[click here](#postorder)|
-| `insertNode` | Inserts a new node  in to the Binary Search Tree. |[click here](#insertnode)|
-| `CountTotalLeafNodes` | Count the total number of leaf nodes from Binary Search Tree.     |[click here](#counttotalleafnode)|
-| `CountTotalNonLeafNodes` | Count the total number of Non leaf nodes from Binary Search Tree.     |[click here](#counttotalnonleafnode)
-| `search`          | Searches for a given value in the Binary Search Tree.     |[click here](#search)|
+| `createBST`     | Create the Graph           |[click here](#createbst)|
+|`inorder`|Inorder Traversal of Graph.|[click here](#inorder)|
+|`preorder`|Preorder Traversal of Graph.|[click here](#preorder)|
+|`postorder`|Postorder Traversal of Graph.|[click here](#postorder)|
+| `insertNode` | Inserts a new node  in to the Graph. |[click here](#insertnode)|
+| `CountTotalLeafNodes` | Count the total number of leaf nodes from Graph.     |[click here](#counttotalleafnode)|
+| `CountTotalNonLeafNodes` | Count the total number of Non leaf nodes from Graph.     |[click here](#counttotalnonleafnode)
+| `search`          | Searches for a given value in the Graph.     |[click here](#search)|
 
 
 | File         | Description                                       |Link|
