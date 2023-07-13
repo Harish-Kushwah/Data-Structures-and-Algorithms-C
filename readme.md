@@ -8,7 +8,7 @@ This branch contains the implementation of a Graph in C. A Graph is a Non linear
 A Graph is a Non linear data structure consisting of a collection of nodes, where each node contains a value and a pointer to the left node and right node
 ```c
 //Node structure of Graph 
-typedef struct Node
+typedef struct Graph
 {
     int val;
     struct Node *left ,*right;
