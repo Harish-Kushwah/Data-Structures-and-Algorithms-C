@@ -1,6 +1,6 @@
 # Contributing to Graph
 
-Thank you for considering contributing to the Binary Search Tree! We appreciate your interest in improving this project. To ensure a smooth and collaborative contribution process, please take a moment to review the guidelines below.
+Thank you for considering contributing to the graph ! We appreciate your interest in improving this project. To ensure a smooth and collaborative contribution process, please take a moment to review the guidelines below.
 
 ## Bug Reports and Feature Requests
 
@@ -31,10 +31,10 @@ To maintain consistency and readability throughout the repository, please adhere
 
 ## Licensing
 
-By contributing to the Binary Search Tree, you agree that your contributions will be licensed under the [MIT License](link-to-license). Make sure you understand and comply with the license before submitting your contributions.
+By contributing to the graph , you agree that your contributions will be licensed under the [MIT License](link-to-license). Make sure you understand and comply with the license before submitting your contributions.
 
 ## Contact
 
 If you have any questions, suggestions, or need further assistance, please feel free to reach out to us at harishkushwah54321@gmial.com. We appreciate your feedback and involvement in improving this repository.
 
-Thank you for your interest in contributing to the Singly Binary Search Tree. We look forward to your contributions!
+Thank you for your interest in contributing to the Singly graph . We look forward to your contributions!
