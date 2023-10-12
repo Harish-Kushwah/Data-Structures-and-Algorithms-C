@@ -1,10 +1,17 @@
 # SYBSC (CS) Practical Exam Slips Repository
 
-This repository contains a collection of 20 practical exam slips for SYBSC (Computer Science) students. Each slip consists of 2 questions, and this `README.md` file is designed to help students navigate through the repository effectively.
+![C Language](https://img.shields.io/badge/Language-C-blue.svg)
+
+This repository contains a collection of 20 practical exam slips for SYBSC (Computer Science) students. Each slip consists of 2 questions
+
+---
 
 ## Slips Directory
 
 The slips are organized into separate directories, one for each slip. You can access each slip by clicking on the corresponding link below:
+
+---
+
 ## Practical Slips
 1. [Slip 1](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/tree/slips/src/Practicals/slip1)
 2. [Slip 2](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/tree/slips/src/Practicals/slip2)
@@ -27,22 +34,28 @@ The slips are organized into separate directories, one for each slip. You can ac
 19. [Slip 19](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/tree/slips/src/Practicals/slip19)
 20. [Slip 20](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/tree/slips/src/Practicals/slip20)
 
+---
 ## Updated Slips 
    This folder contains another updated slips program 
 * [New Slips](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/tree/slips/src/Practicals/NewSlips)
 
+---
 ## Usage
 
 1. Click on the link to the slip you want to access.
 2. Inside each slip's directory, you will find the two questions for that slip, along with any necessary resources or instructions.
-
+---
 ## Contributing
 
-If you have additional resources or would like to make improvements to the slips, please feel free to contribute to this repository. You can fork the repository, make your changes, and then submit a pull request.
+If you have additional resources or would like to make improvements to the slips, please feel free to contribute to this repository.  please follow the guidelines in [CONTRIBUTE.md](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/slips/contribute.md).
+
+---
 
 ## License
 
 This repository is provided under the [MIT License](/LICENSE). Please review the license for more details.
+
+---
 
 ## Contact
 
