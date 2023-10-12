@@ -18,6 +18,8 @@ This repository contains a collection of commonly used data structures and algor
 | Queue               | A data structure that follows the First-In-First-Out (FIFO) principle. | [Queue](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Queue/readme.md) |
 | Binary Search Tree  | A binary tree data structure with the property that the left child is less than the parent, and the right child is greater. | [Tree](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/Tree/readme.md) |
 |Graph|Graphs are a fundamental data structure used to represent relationships between objects. They consist of vertices (nodes) connected by edges.|[Graph](src/)|
+|Slips|This contains a collection of 20+ practical exam slips for Computer Science students|[slips](https://github.com/Harish-Kushwah/Data-Structures-and-Algorithms-C/blob/slips/readme.md)|
+
 
 | Algorithms          | Description                                      | Code |
 |---------------------|--------------------------------------------------|------|
