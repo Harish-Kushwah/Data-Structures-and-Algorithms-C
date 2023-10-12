@@ -1,4 +1,4 @@
-# Contributing to Graph
+# Contributing to Slips
 
 Thank you for considering contributing to the Binary Search Tree! We appreciate your interest in improving this project. To ensure a smooth and collaborative contribution process, please take a moment to review the guidelines below.
 
