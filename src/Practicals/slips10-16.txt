@@ -1,0 +1,790 @@
+slip-10
+/*
+Q1:    Write  the  C-Language  program  to  Sort  a  random  array  of  n  integers 
+(accept  the  value  of  n  from  user)  in  ascending  order  by  using  selection  sort 
+algorithm.
+*/
+
+#include<stdio.h>
+void swap(int *x,int *y)
+{
+    int temp=*x;
+    *x=*y;
+    *y=temp;
+}
+void selectionSort(int arr[],int n)
+{
+  for(int i=0;i<n;i++)
+  {
+    int min=arr[i];
+    int index=i;
+    for(int j=i+1;j<n;j++){
+        if(arr[j]<min){
+            min=arr[j];
+            index=j;
+        }
+    }
+    swap(&arr[i],&arr[index]);
+  }
+
+}
+int main()
+{
+    int n;
+    printf("Enter size of array :");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter a array :");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    selectionSort(arr,n);
+    printf("Sorted array :");
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------------------
+
+/*
+Q2:  Write  the  C-Language  program  that  merges  two  ordered  linked  lists  into 
+third new list. When two lists are merged the data in the resulting list are also 
+ordered.  The  two  original  lists  should  be  left  unchanged.  That  is  merged  list 
+should be new one. Use linked implementation. 
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct Node
+{
+    int val;
+    struct Node *next;
+}Node;
+
+Node *createNodes(int n)
+{
+    Node *head=NULL,*temp=NULL,*newnode=NULL;
+    for(int i=0;i<n;i++)
+    {
+        newnode=(Node *)malloc(sizeof(Node));
+        printf("Enter a value :");
+        scanf("%d",&newnode->val);
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=temp=newnode;
+        }
+        else{
+            temp->next=newnode;
+            temp=newnode;
+        }
+    }
+    return head;
+}
+Node *printList(Node *head)
+{
+    for(Node *temp=head;temp!=NULL;temp=temp->next)
+    {
+        printf("%d ",temp->val);
+    }
+}
+
+Node *merge(Node *list1,Node *list2)
+{
+    for(Node *temp=list1;temp!=NULL;temp=temp->next)
+    {
+        if(temp->next==NULL)
+        {
+            temp->next=list2;
+            break;
+        }
+    }
+    return list1;
+}
+
+int main()
+{
+    Node *list1=NULL,*list2=NULL,*list3=NULL;
+    int n1,n2;
+    printf("Enter size of list1 :");
+    scanf("%d",&n1);
+    list1=createNodes(n1);
+
+    printf("Enter size of list2 :");
+    scanf("%d",&n2);
+    list2=createNodes(n2);
+   
+    printf("Merged List3 :");
+    list3=merge(list1,list2);
+    printList(list3);
+    return 0;
+
+
+}
+
+===================================================================================================================
+
+slip-11
+
+/*
+Q2: Write the C-Language program that adds two single variable polynomials. 
+Each polynomial should be represented as a list with linked list 
+implementation.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct Node
+{
+    float coeff;
+    int expo;
+    struct Node *next;
+}Node;
+Node *createNodes(int pow)
+{
+    Node *head=NULL,*temp=NULL,*newnode=NULL;
+    for(int i=pow;i>=0;i--){
+        newnode=(Node *)malloc(sizeof(Node));
+        newnode->expo=i;
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=temp=newnode;
+        }
+        else
+        {
+            temp->next=newnode;
+            temp=newnode;
+        }
+    }
+    return head;
+}
+Node *insertVal(Node *head,int pow)
+{
+    int i=pow;
+    for(Node *temp=head;temp!=NULL;temp=temp->next)
+    {
+        printf("Enter Coefficient of exp %d:",i);
+        scanf("%f",&temp->coeff);
+        i--;
+    }
+    return head;
+}
+Node *add(Node *h1,Node *h2,int pow)
+{
+    Node *h3=createNodes(pow);
+    Node *temp3=h3;
+
+    Node *temp1=h2;
+    for(Node *temp=h1;temp!=NULL&&temp1!=NULL;temp=temp->next)
+    {
+        temp3->coeff=temp->coeff+temp1->coeff;
+        temp3->expo=temp->expo;
+
+        temp3=temp3->next;
+        temp1=temp1->next;
+    }
+    return h3;
+}
+void printExp(Node *head)
+{
+    for(Node *temp=head;temp!=NULL;temp=temp->next)
+    {
+        printf("%0.1f x^%d ",temp->coeff,temp->expo);
+       if(temp->next!=NULL)
+        if(temp->coeff>0){
+            printf("+ ");
+        }
+       /* else{
+            printf("- ");
+        }*/
+    }
+    printf("\n");
+}
+int main()
+{
+    int pow;
+    printf("Enter degree of polynomial:");
+    scanf("%d",&pow);
+    printf("Foe expresion 1 :\n");
+    Node *exp1=insertVal(createNodes(pow),pow);
+    printExp(exp1);
+    printf("Foe expresion 2 :\n");
+    Node *exp2=insertVal(createNodes(pow),pow);
+    printExp(exp2);
+    Node *exp3=add(exp1,exp2,pow);
+    printf("Addition of Expresion :");
+    printExp(exp3);
+    return 0;
+}
+
+==================================================================================================
+slip-12
+
+/*
+Q1:    Write  the  C-Language  program  to  Sort  a  random  array  of  n  integers 
+(create  a  random  array  of  n  integers)  in  ascending  order  by  using  insertion 
+sort algorithm. 
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int* generateRandomArr(int n)
+{
+    srand(time(NULL));
+    int *arr=(int *)malloc(sizeof(int)*n);
+    for(int i=0;i<n;i++)
+    {
+       arr[i]=rand()%10+1;
+    }
+    return arr;
+}
+
+void insertionSort(int arr[],int n)
+{
+    for(int i=1;i<n;i++){
+        int temp=arr[i];
+        int j=i-1;
+        while(j>=0&&arr[j]>temp)
+        {
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=temp;
+    }
+}
+void printArr(int arr[],int n)
+{
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+}
+int main()
+{
+    int n;
+    printf("Enter size of array :");
+    scanf("%d",&n);
+    int *arr=generateRandomArr(n);
+    printf("Non sorted array :");
+    printArr(arr,n);
+    insertionSort(arr,n);
+    printf("Sorted array :");
+    printArr(arr,n);
+
+    return 0;
+}
+----------------------------------------------------------------------------------------------------------------
+
+/*
+Q2: Write the C-Language program that sorts the elements of linked list using 
+any of sorting technique.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct Node
+{
+    int val;
+    struct Node *next;
+}Node;
+
+Node *createNode(int n)
+{
+    Node *head=NULL,*temp=NULL,*newnode=NULL;
+    for(int i=0;i<n;i++)
+    {
+        newnode=(Node *)malloc(sizeof(Node));
+        printf("Enter val :");
+        scanf("%d",&newnode->val);
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=temp=newnode;
+        }
+        else{
+            temp->next=newnode;
+            temp=newnode;
+        }
+    }
+    return head;
+}
+Node *bubbleSort(Node *head)
+{
+    for(Node *temp=head;temp!=NULL;temp=temp->next)
+    {
+        for(Node *temp1=temp;temp1!=NULL;temp1=temp1->next)
+        {
+            if(temp1->val<temp->val)
+            {
+                int val=temp1->val;
+                temp1->val=temp->val;
+                temp->val=val;
+            }
+        }
+    }
+    return head;
+}
+
+void printList(Node *head)
+{
+    for(Node *temp=head;temp!=NULL;temp=temp->next)
+    {
+        printf("%d ",temp->val);
+    }
+    printf("\n");
+}
+int main()
+{
+    int n;
+    printf("Enter size of List: ");
+    scanf("%d",&n);
+    Node *head=createNode(n);
+    printList(head);
+    head=bubbleSort(head);
+    printList(head);
+}
+===========================================================================================================
+slip-13
+/*
+Q1:    Write  the  C-Language  program  to  Sort  a  random  array  of  n  integers 
+(accept  the  value  of  n  from  user)  in  descending  order  by  using  bubble  sort 
+algorithm. 
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int *generateRandomArr(int n)
+{
+    srand(time(NULL));
+    int *arr=(int *)malloc(sizeof(int)*n);
+    for(int i=0;i<n;i++){
+        arr[i]=rand()%20+1;
+    }
+    return arr;
+}
+void bubbleSort(int *arr,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i;j<n;j++){
+            if(arr[i]<arr[j])
+            {
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+      }
+    }
+}
+void printArr(int arr[],int n)
+{
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+
+}
+int main()
+{
+    int n;
+    printf("Enter size of array :");
+    scanf("%d",&n);
+    int *arr=generateRandomArr(n);
+    printArr(arr,n);
+    bubbleSort(arr,n);
+    printf("Sorted array :");
+    printArr(arr,n);
+}
+---------------------------------------------------------------------------------------------------------
+/*
+Q2:  Write  the  C-Language  menu  driven  program  to  implement  static  stack  of 
+integers 
+*/
+#include<stdio.h>
+
+#define N 10
+typedef struct Stack
+{
+  int arr[N];
+  int top;
+}Stack;
+Stack *initStack(Stack *s1)
+{
+      s1->top=-1;
+      return s1;
+}
+int isEmpty(Stack *s1)
+{
+    return s1->top==-1;
+}
+int isFull(Stack *s1)
+{
+    return s1->top==N-1;
+}
+void push(Stack *s1,int val)
+{
+    if(!isFull(s1))
+    s1->arr[++(s1->top)]=val;  
+    else
+    printf("Stack is full"); 
+}
+int pop(Stack *s1)
+{
+   if(!isEmpty(s1))
+    return s1->arr[(s1->top)--];
+    else
+    return -1;
+}
+
+int main()
+{
+    Stack *s1=initStack(s1);
+    push(s1,1);
+    push(s1,2);
+    printf("%d\n", pop(s1));
+    push(s1,3);
+    printf("%d\n", pop(s1));
+    return 0;
+}
+========================================================================================================
+slip-14
+/*
+Q1:    Write  the  C-Language  program  to  Sort  a  random  array  of  n  integers 
+(accept  the  value  of  n  from  user)  in  ascending  order  by  using  bubble  sort 
+algorithm.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int *generateRandomArr(int n)
+{
+    srand(time(NULL));
+    int *arr=(int *)malloc(sizeof(int)*n);
+    for(int i=0;i<n;i++){
+        arr[i]=rand()%20+1;
+    }
+    return arr;
+}
+void bubbleSort(int *arr,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i;j<n;j++){
+            if(arr[i]>arr[j])
+            {
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+      }
+    }
+}
+void printArr(int arr[],int n)
+{
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+
+}
+int main()
+{
+    int n;
+    printf("Enter size of array :");
+    scanf("%d",&n);
+    int *arr=generateRandomArr(n);
+    printf("Random array :");
+    printArr(arr,n);
+    bubbleSort(arr,n);
+    printf("Sorted array :");
+    printArr(arr,n);
+}
+------------------------------------------------------------------------------------------------------------
+=============================================================================================================
+slip-15
+/*
+Q1:  Write the C-Language program which accept n names of cities and a city 
+name  from user  and  use  binary  search algorithm  to  check  whether  the  name 
+is present or not.
+*/
+
+#include<stdio.h>
+#include<string.h>
+
+typedef struct Person
+{
+    char Name[20];
+}Person;
+int binSearch(Person p1[],char target[],int n)
+{
+    int low=0;
+    int upp=n-1;
+    while(low<upp)
+    {
+        int mid=(low+upp)/2;
+        int cmp=strcmp(p1[mid].Name,target);
+        if(cmp==0){
+        return 1;
+        }
+        else if(cmp<0)
+        {
+           low=mid+1;
+        }
+        else{
+            upp=mid-1;
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int n;
+    printf("Enter N:");
+    scanf("%d",&n);
+    Person p1[n];
+    for(int i=0;i<n;i++)
+    {
+        printf("Enter a Name :");
+        scanf("%s",p1[i].Name);
+        strcpy(p1[i].Name,strupr(p1[i].Name));
+    }
+    char target[20];
+    printf("Enter target :");
+    scanf("%s",target);
+    strcpy(target,strupr(target));
+    int found=binSearch(p1,target,n);
+    printf("%d",found);
+   
+}
+-----------------------------------------------------------------------------------------------------------
+/*
+Q2: Write the C-Language program that reverses a string of characters using static 
+stack.
+*/
+
+#include<stdio.h>
+#define N 10
+typedef struct Stack
+{
+     char string[N];
+     int top;
+}Stack;
+
+int isEmpty(Stack *s1)
+{
+    return s1->top==-1;
+}
+int isFull(Stack *s1)
+{
+    return s1->top==N-1;
+}
+Stack* initStack(Stack *s1)
+{
+    s1->top=-1;
+    return s1;
+}
+void push(Stack *s1,char ch)
+{
+  if(!isFull(s1))
+   s1->string[++(s1->top)]=ch;
+   else
+   printf("Stack is Full\n");
+}
+char pop(Stack *s1)
+{
+    if(!isEmpty(s1)){
+     return s1->string[(s1->top)--];
+    }
+    else
+    return -1;
+}
+
+int main()
+{
+    Stack *s1=initStack(s1);
+    char str[10];
+    printf("Enter String :");
+    scanf("%s",str);
+    
+    int i;
+    for(i=0;str[i];i++){
+        push(s1,str[i]);
+    }
+    for(int j=0;j<i;j++)
+    {
+        str[j]=pop(s1);
+    }
+    printf("Reverse String :%s",str);
+    
+}
+==================================================================================================
+slip-16
+
+ /*
+ Q1:  Write the C-Language program which accept n names of cities and a city 
+name from user and use sentinel linear search algorithm to check whether the 
+name is present or not.
+ */
+#include<stdio.h>
+#include<string.h>
+typedef struct Person
+{
+    char name[20];
+}Person;
+
+void sentialSearch(Person p1[],int n)
+{
+    char target[20];
+    printf("Enter Name to search :");
+    scanf("%s",target);
+    strcpy(target,strupr(target));
+
+    char last[20];
+    strcpy(last,p1[n-1].name);
+    strcpy(p1[n-1].name,target);
+    int i=0;
+    while(strcmp(p1[i].name,target)!=0)
+    i++;
+
+    strcpy(p1[n-1].name,last);
+    if((i<n-1)||(strcmp(p1[n-1].name,target)==0))
+   printf("Name is found:");
+    else
+    printf("Name is not found ");
+
+}
+
+int main()
+{
+     int n;
+     printf("\nEnter n :");
+     scanf("%d",&n);
+     Person p1[n];
+    
+     for(int i=0;i<n;i++){
+        printf("Enter name :");
+        scanf("%s",p1[i].name);
+        strcpy(p1[i].name,strupr(p1[i].name));
+     }
+     sentialSearch(p1,n);
+}
+
+-----------------------------------------------------------------------------------------------------------
+*
+Q2: Write the C-Language program to convert an infix expression of the form 
+(a*(b+c)*((d-a)/b)) into its equivalent postfix notation using stack.
+*/
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define N 20
+ char Stack[N];
+ int top=-1;
+
+int isEmpty()
+{
+    return top==-1;
+}
+int isFull()
+{
+    return top==N-1;
+}
+void push(char ch)
+{
+    if(!isFull())
+    {
+       Stack[++top]=ch;
+    }
+    else
+    printf("Stack is Full :");
+}
+char pop()
+{
+    if(!isEmpty())
+    {
+        return Stack[top--];
+    }
+}
+char peek()
+{
+     if(!isEmpty())
+    {
+        return Stack[top];
+    }
+}
+int pres(char ch)
+{
+    if(ch=='^')
+    return 3;
+    else if(ch=='/'||ch=='*')
+    return 2;
+    else if (ch=='+'||ch=='-')
+    return 1;
+    else
+    return 0;
+}
+void toPost(char infix[])
+{
+    char postfix[20];
+    int k=0;
+    char symbol,next;
+    for(int i=0;i<strlen(infix);i++)
+    {
+        symbol=infix[i];
+        switch(symbol)
+        {
+            case '(':
+              push(symbol);
+              break;
+            case ')':
+              while ((next=pop())!='(')
+              {
+                 postfix[k++]=next;
+              }
+              break;
+              
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+               while(!isEmpty()&&pres(symbol)<=pres(Stack[top]))
+               {
+                postfix[k++]=pop();
+               }
+               push(symbol);
+               break;
+              default:
+              postfix[k++]=symbol;
+              break;
+              
+        }
+    }
+    while(!isEmpty())
+     postfix[k++]=pop();
+
+     postfix[k]='\0';
+     printf("Exp : %s",postfix);
+}
+int main()
+{
+    char infix[20];
+    printf("Enter infix exp : ");
+    gets(infix);
+    toPost(infix);
+}
+==========================================================================================================================
